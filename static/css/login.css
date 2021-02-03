@@ -31,6 +31,27 @@ body,html {
 
 }
 
+.profile-change-card-side {
+    background: #00b894;
+    color: #fff;
+}
+
+.profile-change-card {
+    width: 550px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background: #00b894;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+}
+
 .form_container {
     margin-top: 20px;
 }
@@ -55,6 +76,17 @@ body,html {
     background: #0984e3 !important;
     color: white !important;
 }
+
+.btn-primary{
+    background: #0984e3 !important;
+    color: white !important;
+}
+
+.btn-primary:hover{
+    border-color: #ffffff !important;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.075), 0 0 8px rgba(255, 255, 255, 0.6) !important;
+}
+
 .login_btn:focus {
     box-shadow: none !important;
     outline: 0px !important;
@@ -76,7 +108,7 @@ body,html {
     color:#ffffff;
 }
 
-#messages{
+#messages, #errors{
     background-color: #d63031;
     color: #fff;
     padding: 10px;
