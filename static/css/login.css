@@ -76,7 +76,7 @@ body,html {
     color:#ffffff;
 }
 
-#messages{
+#messages, #errors{
     background-color: #d63031;
     color: #fff;
     padding: 10px;
