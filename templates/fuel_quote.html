@@ -21,20 +21,6 @@
 			border-radius: 50%;
 		}
     </style>
-    
-    <script>
-        function validateForm() {
-          var x = document.forms["fuel-form"]["gallons"].value;
-          if (isNaN(x)) {
-            alert("Please enter a number for gallons.");
-            return false;
-          }
-          if (x.length < 1) {
-            alert("Please enter a number for gallons.");
-            return false;
-          }
-        }
-    </script>
 </head>
 
 <body>
@@ -97,7 +83,19 @@
 
 	for (var field in form_fields){	
 		form_fields[field].className += ' form-control'
-	}
+    }
+    
+    function validateForm() {
+          var x = document.forms["fuel-form"]["gallons"].value;
+          if (isNaN(x)) {
+            alert("Please enter a number for gallons.");
+            return false;
+          }
+          if (x.length < 1) {
+            alert("Please enter a number for gallons.");
+            return false;
+          }
+        }
 </script>
 
 </html>
