@@ -5,6 +5,15 @@ body,html {
     background: #ffeaa7 !important;
 }
 
+.navbar-light{
+    background-color:#fdcb6e !important;
+}
+
+#logo-nav{
+    width:2em;
+    height:2em;
+}
+
 #logo{
     margin-top: 5em;
 }

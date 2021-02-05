@@ -23,7 +23,34 @@
 	</style>
 </head>
 <body>
-	
+
+	<!-- Navbar -->
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">
+		  <img src="../static/images/logo-simple.png" id="logo-nav">
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+	  
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		  <ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+			  <a class="nav-link" href="fuel_quote.html">Fuel Quote Form</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="history.html">History</a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="#">Profile<span class="sr-only">(current)</span></a>
+			</li>
+		  </ul>
+		</div>
+	</nav>
+
+	<!-- Navbar ends-->
+
 	<br>
 	<div class="row">
 		<div class="col-md-3">
@@ -39,30 +66,14 @@
 		<div class="col-md-9">
 			<div class="card card-body profile-change-card">
 				
-				<form method="POST" action="" enctype="multipart/form-data">
+				<form method="POST" action="" enctype="multipart/form-data" name="profile-form" onsubmit="return validateForm()">
 				
 					<div class="input-group mb-2">
 						<div class="input-group-append">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
 						
-						<input type="text" name="firstname" class="form-control">
-					</div>
-
-					<div class="input-group mb-2">
-						<div class="input-group-append">
-							<span class="input-group-text"><i class="fas fa-user"></i></span>
-						</div>
-						
-						<input type="text" name="lastname" class="form-control">
-					</div>
-
-					<div class="input-group mb-2">
-						<div class="input-group-append">
-							<span class="input-group-text"><i class="fas fa-address-card"></i></span>
-						</div>
-						
-						<input type="text" name="company" class="form-control">
+						<input type="text" name="fullname" class="form-control" required>
 					</div>
 
 					<div class="input-group mb-2">
@@ -70,7 +81,15 @@
 							<span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
 						</div>
 						
-						<input type="text" name="address" class="form-control">
+						<input type="text" name="address1" class="form-control" required>
+					</div>
+
+					<div class="input-group mb-2">
+						<div class="input-group-append">
+							<span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+						</div>
+						
+						<input type="text" name="address2" class="form-control">
 					</div>
 
 					<div class="input-group mb-2">
@@ -136,20 +155,40 @@
 
 	//Query All input fields
 	var form_fields = document.getElementsByTagName('input')
-	form_fields[0].placeholder='First Name..';
-	form_fields[1].placeholder='Last Name..';
-	form_fields[2].placeholder='Company..';
-	form_fields[3].placeholder='Address..';
-	form_fields[4].placeholder='City..';
-	form_fields[5].placeholder='State..';
-	form_fields[6].placeholder='ZIP code..';
-	form_fields[7].placeholder='Email..';
-	form_fields[8].placeholder='Enter password...';
-	form_fields[9].placeholder='Re-enter Password...';
+	form_fields[0].placeholder='Full Name..';
+	form_fields[1].placeholder='Address 1..';
+	form_fields[2].placeholder='Address 2..';
+	form_fields[3].placeholder='City..';
+	form_fields[4].placeholder='State..';
+	form_fields[5].placeholder='ZIP code..';
+	form_fields[6].placeholder='Email..';
+	form_fields[7].placeholder='Enter password...';
+	form_fields[8].placeholder='Re-enter Password...';
 
 
 	for (var field in form_fields){	
 		form_fields[field].className += ' form-control'
+	}
+
+	function validateForm(){
+		var fullnameIsValid = document.forms["profile-form"]["fullname"].value;
+		var address1IsValid = document.forms["profile-form"]["address1"].value;
+		var address2IsValid = document.forms["profile-form"]["address2"].value;
+
+          if (fullnameIsValid.length < 1 || fullnameIsValid.length > 50) {
+            alert("Please enter your full name and make sure it does not exceed beyond 50 characters.");
+            return false;
+		  }
+
+		  if (address1IsValid.length < 1 || address1IsValid.length > 100) {
+            alert("Please enter your address line 1 and make sure it does not exceed beyond 100 characters.");
+            return false;
+		  }
+
+		  if (address2IsValid.length > 100) {
+            alert("Please make sure your address line 2 does not exceed beyond 100 characters.");
+            return false;
+		  }
 	}
 </script>
 
