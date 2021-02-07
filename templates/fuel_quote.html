@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
 	<link rel='stylesheet' type='text/css' media='screen' href='../static/css/fuel_quote.css'>
+  <link rel="stylesheet" href="../static/css/login.css">
 
 	<style>
 		.profile-pic{
@@ -20,13 +21,45 @@
 			margin: 0 auto;
 			border-radius: 50%;
 		}
-	</style>
+    </style>
 </head>
 
 <body>
 
+	<!--Navbar-->
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">
+		  <img src="../static/images/logo-simple.png" id="logo-nav">
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+	  
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		  <ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+			  <a class="nav-link" href="fuel_quote.html">Fuel Quote Form</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="history.html">History</a>
+			</li>
+      <li class="nav-item ">
+        <a class="nav-link" href="account_settings.html">Profile<span class="sr-only">(current)</span></a>
+        </li>
+		  </ul>
+      <ul class="navbar-nav ml-auto ">
+				<li class="nav-item ">
+					<a class="nav-link" href="login.html">Logout</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<!--End of Navbar-->
+    <br>
+
 	<div class="form_container">
-        <form method="POST" action="" enctype="multipart/form-data">
+        <form name="fuel-form" method="POST" action="" enctype="multipart/form-data" onsubmit="return validateForm()">
 				
             <div class="input-group mb-2">
                 <div class="input-group-append">
@@ -41,7 +74,7 @@
                     <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
                 </div>
                 
-                <input type="text" name="deliver-address" class="form-control">
+                <input type="text" name="deliver-address" class="form-control" readonly>
             </div>
 
             <div class="input-group mb-2">
@@ -65,8 +98,6 @@
         <input class="btn btn-primary centered" type="submit" name="Calculate Cost" value="Calculate Cost">
         </form>
 
-        <!-- <h2>$2.13/gal</h2>
-        <h2>Total: $100</h2> -->
     </div>
 </body>
 
@@ -79,13 +110,25 @@
 	//Query All input fields
     var form_fields = document.getElementsByTagName('input')
     form_fields[0].placeholder='Gallons';
-	form_fields[1].placeholder='Deliver Address';
+	form_fields[1].placeholder='123 Fake Address';
 	form_fields[2].placeholder='Delivery Date';
 
 
 	for (var field in form_fields){	
 		form_fields[field].className += ' form-control'
-	}
+    }
+    
+    function validateForm() {
+          var x = document.forms["fuel-form"]["gallons"].value;
+          if (isNaN(x)) {
+            alert("Please enter a number for gallons.");
+            return false;
+          }
+          if (x.length < 1) {
+            alert("Please enter a number for gallons.");
+            return false;
+          }
+        }
 </script>
 
 </html>
